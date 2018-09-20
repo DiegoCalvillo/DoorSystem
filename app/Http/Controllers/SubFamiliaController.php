@@ -13,7 +13,7 @@ class SubFamiliaController extends Controller
     public function create($id)
     {
     	$familia = Familia::find($id);
-    	return view('sub_familias.sub_familia_nuevo')->with('familia', $familia);
+    	return view('configuracion.sub_familias.sub_familia_nuevo')->with('familia', $familia);
     }
 
     public function store(SubFamiliaNuevoRequest $request)
@@ -28,7 +28,7 @@ class SubFamiliaController extends Controller
     public function show($id)
     {
         $sub_familia = SubFamilia::find($id);
-        return view('sub_familias.sub_familia_perfil')->with('sub_familia', $sub_familia);
+        return view('configuracion.sub_familias.sub_familia_perfil')->with('sub_familia', $sub_familia);
     }
 
     public function destroy($id)

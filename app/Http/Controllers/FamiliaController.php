@@ -13,12 +13,12 @@ class FamiliaController extends Controller
     public function index()
     {
     	$familia = Familia::all();
-    	return view('familias.familia')->with('familia', $familia);
+    	return view('configuracion.familias.familia')->with('familia', $familia);
     }
 
     public function create()
     {
-    	return view('familias.familia_nuevo');
+    	return view('configuracion.familias.familia_nuevo');
     }
 
     public function store(FamiliaNuevoRequest $request)
@@ -34,7 +34,7 @@ class FamiliaController extends Controller
     {
     	$familia = Familia::find($id);
         $sub_familias = $familia->sub_familias;
-    	return view('familias.familia_perfil')->with('familia', $familia)->with('sub_familias', $sub_familias);
+    	return view('configuracion.familias.familia_perfil')->with('familia', $familia)->with('sub_familias', $sub_familias);
     }
 
     public function destroy($id)

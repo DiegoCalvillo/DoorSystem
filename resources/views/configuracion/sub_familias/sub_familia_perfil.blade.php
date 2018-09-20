@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-7">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<b>Información general</b>
@@ -40,19 +40,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<b>Opciones</b>
-					</div>
-					<div class="panel-body">
-						<a href="" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i> Editar</a>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="glyphicon glyphicon-remove-sign"></i> Eliminar</button>
-						@include('sub_familias.sub_familia_modals')
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('configuracion.shared.familia_opciones')
+		@include('configuracion.sub_familias.sub_familia_modals')
 	</div>
 </div>
 @stop
