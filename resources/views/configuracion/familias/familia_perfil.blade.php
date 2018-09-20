@@ -56,17 +56,18 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($sub_familias as $sub_familias)
+									@foreach($sub_familias as $sub_familia)
 										<tr>
-											<td>{{ $sub_familias->id }}</td>
+											<td>{{ $sub_familia->id }}</td>
 											<td>
-												<a href="{{ route('sub_familia/show', ['id' => $sub_familias->id]) }}">{{ $sub_familias->nombre_sub_familia }}</a>
+												<a href="{{ route('sub_familia/show', ['id' => $sub_familia->id]) }}">{{ $sub_familia->nombre_sub_familia }}</a>
 											</td>
 										</tr>
 									@endforeach
 								</tbody>
 							</table>
 						</div>
+						{{$sub_familias->links()}}
 					</div>
 				</div>
 				<div class="col-lg-4">

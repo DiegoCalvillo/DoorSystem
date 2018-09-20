@@ -385,9 +385,11 @@
 @yield('content_familias')
 @yield('content_familia_nuevo')
 @yield('content_familia_perfil')
+@yield('content_familia_editar')
 <!--SubFamilias-->
 @yield('content_sub_familia_nuevo')
 @yield('content_sub_familia_perfil')
+@yield('content_sub_familia_editar')
     <!-- jQuery 
     <script src="js/jquery.min.js"></script>-->
     {!! Html::script('js/jquery.min.js') !!}

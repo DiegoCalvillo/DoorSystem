@@ -12,8 +12,8 @@ class FamiliaController extends Controller
 {
     public function index()
     {
-    	$familia = Familia::all();
-    	return view('configuracion.familias.familia')->with('familia', $familia);
+        $familias = Familia::paginate(5);
+    	return view('configuracion.familias.familia')->with('familias', $familias);
     }
 
     public function create()
@@ -33,7 +33,8 @@ class FamiliaController extends Controller
     public function show($id)
     {
     	$familia = Familia::find($id);
-        $sub_familias = $familia->sub_familias;
+        #$sub_familias = $familia->sub_familias;
+        $sub_familias = SubFamilia::where('familia_id', '=', $familia->id)->paginate(5);
     	return view('configuracion.familias.familia_perfil')->with('familia', $familia)->with('sub_familias', $sub_familias);
     }
 
@@ -47,5 +48,20 @@ class FamiliaController extends Controller
         $familia->delete();
         Session::flash('message', 'El registro ha sido eliminado exitosamente');
         return redirect('/familias');
+    }
+
+    public function edit($id)
+    {
+        $familia = Familia::find($id);
+        return view('configuracion.familias.familia_editar')->with('familia', $familia);
+    }
+
+    public function update(Request $request)
+    {
+        $familia = Familia::find($request->id);
+        $familia->nombre_familia = $request->nombre_familia;
+        $familia->save();
+        Session::flash('message', 'El registro ha sido actualizado exitosamente');
+        return redirect('/familias/'.$familia->id);
     }
 }

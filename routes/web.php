@@ -26,9 +26,13 @@ Route::get('familias/create', 'FamiliaController@create');
 Route::post('familias/store', ['as' => 'familias/store', 'uses' => 'FamiliaController@store']);
 Route::get('familias/{id}', ['as' => 'familias/show', 'uses' => 'FamiliaController@show']);
 Route::get('familias/destroy/{id}', ['as' => 'familias/destroy', 'uses' => 'FamiliaController@destroy']);
+Route::get('familias/{id}/edit', ['as' => 'familias/edit', 'uses' => 'FamiliaController@edit']);
+Route::put('familias/update', ['as' => 'familias/update', 'uses' => 'FamiliaController@update']);
 
 /*Rutas de SubFamiliaController*/
 Route::get('sub_familia/create/{id}', ['as' => 'sub_familia/create', 'uses' => 'SubFamiliaController@create']);
 Route::post('sub_familia/store', ['as' => 'sub_familia/store', 'uses' => 'SubFamiliaController@store']);
 Route::get('sub_familia/{id}', ['as' => 'sub_familia/show', 'uses' => 'SubFamiliaController@show']);
 Route::get('sub_familia/destroy/{id}', ['as' => 'sub_familia/destroy', 'uses' => 'SubFamiliaController@destroy']);
+Route::get('sub_familia/{id}/edit', ['as' => 'sub_familia/edit', 'uses' => 'SubFamiliaController@edit']);
+Route::put('sub_familia/update', ['as' => 'sub_familia/update', 'uses' => 'SubFamiliaController@update']);

@@ -5,10 +5,10 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-12">
-					@include('alerts.success')
 					<h1 class="page-header">Familias</h1>
 				</div>
 			</div>
+			@include('alerts.success')
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="panel panel-default">
@@ -24,7 +24,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($familia as $familia)
+									@foreach($familias as $familia)
 										<tr>
 											<td>{{ $familia->id }}</td>
 											<td>
@@ -34,6 +34,7 @@
 									@endforeach
 								</tbody>
 							</table>
+							{{ $familias->links() }}
 						</div>
 					</div>
 				</div>
@@ -48,7 +49,7 @@
 									<tbody>
 										<tr>
 											<th>Registros</th>
-											<td>{{ $familia->count() }}</td>
+											<td>{{ $familias->count() }}</td>
 										</tr>
 									</tbody>
 								</table>

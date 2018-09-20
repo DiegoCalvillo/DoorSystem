@@ -38,4 +38,19 @@ class SubFamiliaController extends Controller
         $sub_familia->delete();
         return redirect('familias/'.$familia);
     }
+
+    public function edit($id)
+    {
+        $sub_familia = SubFamilia::find($id);
+        return view('configuracion.sub_familias.sub_familia_editar')->with('sub_familia', $sub_familia);
+    }
+
+    public function update(Request $request)
+    {
+        $sub_familia = SubFamilia::find($request->id);
+        $sub_familia->nombre_sub_familia = $request->nombre_sub_familia;
+        $sub_familia->save();
+        Session::flash('message', 'El registro ha sido actualizado exitosamente');
+        return redirect('sub_familia/'.$sub_familia->id);
+    }
 }
