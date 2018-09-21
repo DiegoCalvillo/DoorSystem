@@ -49,6 +49,7 @@ class SubFamiliaController extends Controller
     {
         $sub_familia = SubFamilia::find($request->id);
         $sub_familia->nombre_sub_familia = $request->nombre_sub_familia;
+        $sub_familia->estatus = $request->estatus;
         $sub_familia->save();
         Session::flash('message', 'El registro ha sido actualizado exitosamente');
         return redirect('sub_familia/'.$sub_familia->id);

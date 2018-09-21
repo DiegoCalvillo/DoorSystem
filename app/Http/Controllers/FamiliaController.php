@@ -60,6 +60,7 @@ class FamiliaController extends Controller
     {
         $familia = Familia::find($request->id);
         $familia->nombre_familia = $request->nombre_familia;
+        $familia->estatus = $request->estatus;
         $familia->save();
         Session::flash('message', 'El registro ha sido actualizado exitosamente');
         return redirect('/familias/'.$familia->id);

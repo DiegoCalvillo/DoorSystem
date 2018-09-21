@@ -19,8 +19,14 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								{!! Form::label('full_name', 'Famlia') !!}
+								{!! Form::label('full_name', 'Familia') !!}
 								{!! Form::text('nombre_familia', $familia->nombre_familia, ['class' => 'form-control']) !!}
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								{!! Form::label('full_name', 'Habilitado') !!}
+								{!! Form::select('estatus', array('0' => 'Desactivado', '1' => 'Activado'), $familia->estatus, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 					</div>

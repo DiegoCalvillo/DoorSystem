@@ -53,6 +53,7 @@
 									<tr>
 										<th>#</th>
 										<th>SubFamilia</th>
+										<th>Estatus</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -61,6 +62,13 @@
 											<td>{{ $sub_familia->id }}</td>
 											<td>
 												<a href="{{ route('sub_familia/show', ['id' => $sub_familia->id]) }}">{{ $sub_familia->nombre_sub_familia }}</a>
+											</td>
+											<td>
+												@if ($sub_familia->estatus)
+													<font color="green"><b>Activado</b></font>
+												@else
+													<font color="red"><b>Desactivado</b></font>
+												@endif
 											</td>
 										</tr>
 									@endforeach
