@@ -54,4 +54,13 @@ class SubFamiliaController extends Controller
         Session::flash('message', 'El registro ha sido actualizado exitosamente');
         return redirect('sub_familia/'.$sub_familia->id);
     }
+
+    public function getSubFamilias(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $sub_familias = SubFamilia::where('familia_id', '=', $id)->get();
+            return response()->json($sub_familias);
+        }
+    }
 }

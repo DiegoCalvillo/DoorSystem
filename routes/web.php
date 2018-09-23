@@ -36,3 +36,10 @@ Route::get('sub_familia/{id}', ['as' => 'sub_familia/show', 'uses' => 'SubFamili
 Route::get('sub_familia/destroy/{id}', ['as' => 'sub_familia/destroy', 'uses' => 'SubFamiliaController@destroy']);
 Route::get('sub_familia/{id}/edit', ['as' => 'sub_familia/edit', 'uses' => 'SubFamiliaController@edit']);
 Route::put('sub_familia/update', ['as' => 'sub_familia/update', 'uses' => 'SubFamiliaController@update']);
+Route::get('sub_familia_id/{id}', 'SubFamiliaController@getSubFamilias');
+
+/*Rutas de ArticulosController*/
+Route::resource('/articulos', 'ArticulosController');
+Route::get('articulos/create', ['as' => 'articulos/create', 'uses' => 'ArticulosController@create']);
+Route::post('articulos/store', ['as' => 'articulos/store', 'uses' => 'ArticulosController@store']);
+Route::get('articulos/{id}', ['as' => 'articulos/show', 'uses' => 'ArticulosController@show']);

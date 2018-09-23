@@ -10,4 +10,9 @@ class Familia extends Model
     {
     	return $this->hasMany(SubFamilia::class);
     }
+
+    public static function habilitado()
+    {
+    	return Familia::where('estatus', '=', true)->get();
+    }
 }

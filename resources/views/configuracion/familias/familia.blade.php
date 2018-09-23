@@ -42,6 +42,7 @@
 									@endforeach
 								</tbody>
 							</table>
+							@include('alerts.warning')
 							{{ $familias->links() }}
 						</div>
 					</div>

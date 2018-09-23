@@ -13,6 +13,10 @@ class FamiliaController extends Controller
     public function index()
     {
         $familias = Familia::paginate(5);
+        if ($familias->count() == 0) 
+        {
+            Session::flash('message-warning', 'Sin registros');
+        }
     	return view('configuracion.familias.familia')->with('familias', $familias);
     }
 
