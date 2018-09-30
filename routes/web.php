@@ -43,3 +43,5 @@ Route::resource('/articulos', 'ArticulosController');
 Route::get('articulos/create', ['as' => 'articulos/create', 'uses' => 'ArticulosController@create']);
 Route::post('articulos/store', ['as' => 'articulos/store', 'uses' => 'ArticulosController@store']);
 Route::get('articulos/{id}', ['as' => 'articulos/show', 'uses' => 'ArticulosController@show']);
+Route::get('articulos/{id}/edit', ['as' => 'articulos/edit', 'uses' => 'ArticulosController@edit']);
+Route::put('articulos/update', ['as' => 'articulos/update', 'uses' => 'ArticulosController@update']);

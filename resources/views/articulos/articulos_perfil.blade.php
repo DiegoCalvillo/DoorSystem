@@ -73,6 +73,7 @@
 					</div>
 				</div>
 			</div>
+			@include('articulos.shared.articulos_opciones')
 		</div>
 	</div>
 </div>

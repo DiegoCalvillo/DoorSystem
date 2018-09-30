@@ -398,6 +398,7 @@
 @yield('content_articulos')
 @yield('content_articulos_nuevo')
 @yield('content_articulos_perfil')
+@yield('content_articulos_editar')
     <!-- jQuery 
     <script src="js/jquery.min.js"></script>-->
     {!! Html::script('js/jquery.min.js') !!}
