@@ -59,6 +59,7 @@
 						<center><a href="{{ url('articulos/create') }}" type="button" class="btn btn-primary">Crear Nuevo</a></center>
 					</div>
 				</div>
+				@include('articulos/busqueda_articulos')
 			</div>
 		</div>
 	</div>

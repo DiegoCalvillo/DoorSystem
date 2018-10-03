@@ -9,6 +9,7 @@
 				<h1 class="page-header">Registro de artículos</h1>
 			</div>
 		</div>
+		@include('alerts.request')
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">

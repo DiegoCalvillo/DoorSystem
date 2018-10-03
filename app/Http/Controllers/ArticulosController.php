@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use Session;
 use DoorSystem\Articulos as Articulos;
 use DoorSystem\Familia as Familia;
+use DoorSystem\Http\Requests\ArticulosCreateRequest;
 
 class ArticulosController extends Controller
 {
     public function index() 
-    {
+    {   
+        $familias = Familia::habilitado()->pluck('nombre_familia', 'id');
     	$articulos = Articulos::all();
     	if ($articulos->count() == 0) 
     	{
     		Session::flash('message-warning', 'Sin registros');
     	}
-    	return view('articulos.articulos')->with('articulos', $articulos);
+    	return view('articulos.articulos')->with('articulos', $articulos)->with('familias', $familias);
     }
 
     public function create()
@@ -25,7 +27,7 @@ class ArticulosController extends Controller
     	return view('articulos.articulos_nuevo')->with('familias', $familias);
     }
 
-    public function store(Request $request)
+    public function store(ArticulosCreateRequest $request)
     {
         $articulo = new Articulos;
         $articulo->familia_id = $request->familia_id;

@@ -17,4 +17,5 @@ class Articulos extends Model
     {
     	return $this->belongsTo(SubFamilia::class, 'sub_familia_id');
     }
+
 }
