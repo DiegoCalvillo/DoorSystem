@@ -1,8 +1,8 @@
 $('#familias').change(function(event){
-	$.get('/busqueda_articulos/'+event.target.value+'', function(response){
+	$.get('/busqueda_articulos/articulos_familia/'+event.target.value+'/articulos_subfamilia/0', function(response){
 		$('#tabla_articulos').empty();
 		$(response).each(function(key, value){
-			$('#tabla_articulos').append('<tr><td>'+value.id+'</td><td><a>'+value.descripcion+'</a></td></tr>');
+			$('#tabla_articulos').append('<tr><td>'+value.id+'</td><td><a href="/articulos/'+value.id+'">'+value.descripcion+'</a></td></tr>');
 		});
 	});
 
@@ -18,5 +18,11 @@ $('#familias').change(function(event){
 });
 
 $('#sub_familias').change(function(event){
-	console.log("Este se activa");
+	var id_familia = document.getElementById('familias').value;
+	$.get('/busqueda_articulos/articulos_familia/'+id_familia+'/articulos_subfamilia/'+event.target.value+'', function(response){
+		$('#tabla_articulos').empty();
+		$(response).each(function(key, value){
+			$('#tabla_articulos').append('<tr><td>'+value.id+'</td><td><a href="/articulos/'+value.id+'">'+value.descripcion+'</a></td></tr>');
+		});
+	});
 });

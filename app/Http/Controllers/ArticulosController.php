@@ -80,10 +80,13 @@ class ArticulosController extends Controller
         return redirect('/articulos/'.$articulo->id);
     }
 
-    public function getArticulos(Request $request, $id)
+    public function getArticulos(Request $request, $id_familia, $id_subfamilia)
     {
         if($request->ajax()) {
-            $articulos = Articulos::familias($id);
+            $articulos = Articulos::familias($id_familia);
+            if($id_subfamilia != 0) {
+                $articulos = $articulos->where('sub_familia_id', '=', $id_subfamilia);
+            }
             return response()->json($articulos->toArray());
         }
     }

@@ -45,4 +45,4 @@ Route::post('articulos/store', ['as' => 'articulos/store', 'uses' => 'ArticulosC
 Route::get('articulos/{id}', ['as' => 'articulos/show', 'uses' => 'ArticulosController@show']);
 Route::get('articulos/{id}/edit', ['as' => 'articulos/edit', 'uses' => 'ArticulosController@edit']);
 Route::put('articulos/update', ['as' => 'articulos/update', 'uses' => 'ArticulosController@update']);
-Route::get('busqueda_articulos/{id}', 'ArticulosController@getArticulos');
+Route::get('busqueda_articulos/articulos_familia/{id_familia}/articulos_subfamilia/{id_subfamilia}', 'ArticulosController@getArticulos');
