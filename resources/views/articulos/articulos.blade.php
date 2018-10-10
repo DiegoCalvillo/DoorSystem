@@ -16,14 +16,14 @@
 						<b>Registros</b>
 					</div>
 					<div class="panel-body">
-						<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+						<table width="100%" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>#</th>
 									<th>Artículos</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="tabla_articulos">
 								@foreach($articulos as $articulo)
 									<tr>
 										<td>{{ $articulo->id }}</td>
@@ -51,17 +51,19 @@
 								<tbody>
 									<tr>
 										<th>Registros</th>
-										<td>{{ $articulos->count() }}</td>
+										<td id="cantidad_registros">{{ $articulos->count() }}</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<center><a href="{{ url('articulos/create') }}" type="button" class="btn btn-primary">Crear Nuevo</a></center>
+						<center><a href="{{ url('articulos/create') }}" type="button" class="btn btn-primary">Crear Nuevo</a>
+						<a href="" type="button" class="btn btn-primary">Lista detallada</a></center>
 					</div>
 				</div>
 				@include('articulos/busqueda_articulos')
 			</div>
 		</div>
 	</div>
+	{!! Html::script('js/js_articulos/busqueda_articulos.js') !!}
 </div>
 @stop

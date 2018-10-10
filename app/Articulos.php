@@ -18,4 +18,9 @@ class Articulos extends Model
     	return $this->belongsTo(SubFamilia::class, 'sub_familia_id');
     }
 
+    public static function familias($id)
+    {
+    	return Articulos::where('familia_id', '=', $id)->get();
+    }
+
 }

@@ -80,4 +80,11 @@ class ArticulosController extends Controller
         return redirect('/articulos/'.$articulo->id);
     }
 
+    public function getArticulos(Request $request, $id)
+    {
+        if($request->ajax()) {
+            $articulos = Articulos::familias($id);
+            return response()->json($articulos->toArray());
+        }
+    }
 }
