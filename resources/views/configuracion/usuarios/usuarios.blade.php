@@ -1,14 +1,15 @@
 @extends('layouts.principal')
 
-@section('content_articulos')
+@section('content_usuarios')
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Artículos</h1>
+				<h1 class="page-header">Usuarios</h1>
 			</div>
 		</div>
 		@include('alerts.success')
+		@include('alerts.errors')
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="panel panel-default">
@@ -20,26 +21,26 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Artículos</th>
+									<th>Usuario</th>
+									<th>Estatus</th>
 								</tr>
 							</thead>
-							<tbody id="tabla_articulos">
-								@foreach($articulos as $articulo)
+							<tbody>
+								@foreach($usuarios as $usuario)
 									<tr>
-										<td>{{ $articulo->id }}</td>
+										<td>{{ $usuario->id }}</td>
+										<td>{{ $usuario->name }}</td>
 										<td>
-											<a href="{{ route('articulos/show', ['id' => $articulo->id]) }}">
-											{{ $articulo->descripcion }}
-											</a>
+											@if($usuario->estatus)
+												<font color="green"><b>Activado</b></font>
+											@else
+												<font color="red"><b>Desactivado</b></font>
+											@endif
 										</td>
 									</tr>
 								@endforeach
 							</tbody>
 						</table>
-						<div id="aviso_vacio" style="display: none;" class="alert alert-danger alert-dismissible" role="alert">
-							No se encontraron resultados
-						</div>
-						@include('alerts.warning')
 					</div>
 				</div>
 			</div>
@@ -54,19 +55,16 @@
 								<tbody>
 									<tr>
 										<th>Registros</th>
-										<td>{{ $articulos->count() }}</td>
+										<td>{{ $usuarios->count() }}</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<center><a href="{{ url('articulos/create') }}" type="button" class="btn btn-primary">Crear Nuevo</a>
-						<a href="{{ url('articulos_lista') }}" type="button" class="btn btn-primary">Lista detallada</a></center>
+						<center><a href="{{ url('usuarios/create') }}" type="button" class="btn btn-primary">Crear Nuevo</a></center>
 					</div>
 				</div>
-				@include('articulos/busqueda_articulos')
 			</div>
 		</div>
 	</div>
-	{!! Html::script('js/js_articulos/busqueda_articulos.js') !!}
 </div>
 @stop

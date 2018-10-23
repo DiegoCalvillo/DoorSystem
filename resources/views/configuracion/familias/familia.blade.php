@@ -9,6 +9,7 @@
 				</div>
 			</div>
 			@include('alerts.success')
+			@include('alerts.errors')
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="panel panel-default">

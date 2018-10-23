@@ -74,6 +74,7 @@
 				</div>
 			</div>
 			@include('articulos.shared.articulos_opciones')
+			@include('articulos.shared.articulos_modals')
 		</div>
 	</div>
 </div>

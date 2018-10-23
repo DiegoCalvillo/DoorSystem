@@ -10,6 +10,11 @@ use DoorSystem\Http\Requests\ArticulosCreateRequest;
 
 class ArticulosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() 
     {   
         $familias = Familia::habilitado()->pluck('nombre_familia', 'id');
@@ -89,5 +94,19 @@ class ArticulosController extends Controller
             }
             return response()->json($articulos->toArray());
         }
+    }
+
+    public function lista()
+    {
+        $articulos = Articulos::all();
+        return view('articulos.articulos_lista_detallada')->with('articulos', $articulos);
+    }
+
+    public function destroy($id)
+    {
+        $articulo = Articulos::find($id);
+        $articulo->delete();
+        Session::flash('message', 'El registro ha sido eliminado exitosamente');
+        return redirect('articulos');
     }
 }

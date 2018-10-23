@@ -10,6 +10,11 @@ use DoorSystem\Http\Requests\SubFamiliaNuevoRequest;
 
 class SubFamiliaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function create($id)
     {
     	$familia = Familia::find($id);

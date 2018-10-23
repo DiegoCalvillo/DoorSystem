@@ -10,6 +10,11 @@ use DoorSystem\Http\Requests\FamiliaNuevoRequest;
 
 class FamiliaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $familias = Familia::paginate(5);
@@ -45,12 +50,16 @@ class FamiliaController extends Controller
     public function destroy($id)
     {
         $familia = Familia::find($id);
-        if ($familia->sub_familias->count() > 0) {
-            $sub_familias = $familia->sub_familias;
-            SubFamilia::borrar_sub_familias($sub_familias);
-        }   
-        $familia->delete();
-        Session::flash('message', 'El registro ha sido eliminado exitosamente');
+        if (Familia::articulos($familia->id)) {
+            if($familia->sub_familias->count() > 0) {
+                $sub_familias = $familia->sub_familias;
+                SubFamilia::borrar_sub_familias($sub_familias);
+            }
+            $familia->delete();
+            Session::flash('message', 'El registro ha sido eliminado exitosamente');
+        } else {
+            Session::flash('message-error', 'La familia que desea eliminar tiene articulos asociados a ella, para poder eliminar debe desligarlos');
+        }
         return redirect('/familias');
     }
 

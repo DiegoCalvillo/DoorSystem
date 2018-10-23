@@ -3,9 +3,16 @@
 namespace DoorSystem\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use DoorSystem\personas as Personas;
 
 class PrincipalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $usuario = Personas::where('user_id', '=', Auth::User()->id)->get();
+        return view('index')->with('usuario', $usuario);
     }
 
     /**

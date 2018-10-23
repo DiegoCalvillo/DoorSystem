@@ -46,3 +46,17 @@ Route::get('articulos/{id}', ['as' => 'articulos/show', 'uses' => 'ArticulosCont
 Route::get('articulos/{id}/edit', ['as' => 'articulos/edit', 'uses' => 'ArticulosController@edit']);
 Route::put('articulos/update', ['as' => 'articulos/update', 'uses' => 'ArticulosController@update']);
 Route::get('busqueda_articulos/articulos_familia/{id_familia}/articulos_subfamilia/{id_subfamilia}', 'ArticulosController@getArticulos');
+Route::get('articulos_lista', ['as' => 'articulos_lista', 'uses' => 'ArticulosController@lista']);
+Route::get('articulos/destroy/{id}', ['as' => 'articulos/destroy', 'uses' => 'ArticulosController@destroy']);
+
+/*Rutas de UsuariosController*/
+Route::resource('/usuarios', 'UsuariosController');
+Route::get('usuarios/create', 'UsuariosController@create');
+Route::post('usuarios/store', ['as' => 'usuarios/store', 'uses' => 'UsuariosController@store']);
+
+/*Rutas de LoginController*/
+Route::resource('/login', 'LoginController');
+Route::post('login/store', ['as' => 'login/store', 'uses' => 'LoginController@store']);
+Route::get('/logout', 'LoginController@logout');
+
+Auth::routes();

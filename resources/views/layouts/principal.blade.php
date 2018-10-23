@@ -254,12 +254,13 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ Auth::User()->name }}</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -399,6 +400,10 @@
 @yield('content_articulos_nuevo')
 @yield('content_articulos_perfil')
 @yield('content_articulos_editar')
+@yield('content_articulos_detalle')
+<!--Usuarios-->
+@yield('content_usuarios')
+@yield('content_usuarios_nuevo')
     <!-- jQuery 
     <script src="js/jquery.min.js"></script>-->
     {!! Html::script('js/jquery.min.js') !!}

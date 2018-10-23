@@ -1,15 +1,15 @@
 @extends('layouts.principal')
 
-@section('content_familia_nuevo')
+@section('content_usuarios_nuevo')
 <div id="page-wrapper">
 	<div class="container-fluid">
-	{!! Form::open(['route' => 'familias/store', 'method' => 'POST']) !!}
+	{!! Form::open(['route' => 'usuarios/store', 'method' => 'POST']) !!}
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Registro de Familias</h1>
+				<h1 class="page-header">Crear Nuevo Usuario</h1>
 			</div>
 		</div>
-		@include('alerts.request')
+		@include('alerts.errors')
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -20,8 +20,14 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="form-group">
-									{!! Form::label('full_name', 'Familia') !!}
-									{!! Form::text('nombre_familia', null, ['class' => 'form-control']) !!}
+									{!! Form::label('full_name', 'Nombre de Usuario') !!}
+									{!! Form::text('name', null, ['class' => 'form-control']) !!}
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									{!! Form::label('full_name', 'Correo electrónico') !!}
+									{!! Form::email('email', null, ['class' => 'form-control']) !!}
 								</div>
 							</div>
 						</div>
