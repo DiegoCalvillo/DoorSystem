@@ -4,7 +4,9 @@ namespace DoorSystem\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use DoorSystem\personas as Personas;
+use Session;
+use DoorSystem\personas as personas;
+use DoorSystem\User as User;
 
 class PrincipalController extends Controller
 {
@@ -20,7 +22,12 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        $usuario = Personas::where('user_id', '=', Auth::User()->id)->get();
+        $usuario = personas::where('user_id', '=', Auth::User()->id)->get();
+        $user = User::find(Auth::User()->id);
+        if($user->change_password == 0) 
+        {
+            Session::flash('first_message', 'Te damos la más cordial de las bienvenidas a DoorSystem '.$usuario[0]->nombre.', la contraseña que se te proporcionó es temporal, por motivos de seguridad te invitamos a cambiar y a personalizar tu contraseña');
+        }
         return view('index')->with('usuario', $usuario);
     }
 

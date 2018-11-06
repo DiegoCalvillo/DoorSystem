@@ -29,10 +29,10 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">DoorSystem</h3>
                     </div>
-                    @include('alerts.errors')
-                    @include('alerts.request')
                     <div class="panel-body">
                         {!! Form::open(['route' => 'login/store', 'method' => 'POST']) !!}
+                        @include('alerts.errors')
+                        @include('alerts.request')
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Nombre de Usuario" name="name">

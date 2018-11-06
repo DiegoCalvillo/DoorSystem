@@ -260,8 +260,11 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
-                        </li>
+                        @if(Auth::User()->change_password == 0)
+                            <li><a href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a></li>
+                        @else
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a></li>
+                        @endif
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -382,7 +385,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+@include('logout_modal')
 @yield('content_index')
 <!--Configuracion-->
 @yield('content_configuracion')
@@ -404,6 +407,7 @@
 <!--Usuarios-->
 @yield('content_usuarios')
 @yield('content_usuarios_nuevo')
+@yield('content_cambio_contraseña')
     <!-- jQuery 
     <script src="js/jquery.min.js"></script>-->
     {!! Html::script('js/jquery.min.js') !!}

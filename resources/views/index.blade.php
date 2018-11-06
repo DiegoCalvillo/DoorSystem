@@ -6,9 +6,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
-                    <div class="alert alert-warning">
-                       {{ Auth::User()->id }}
-                    </div>
+                    @if(Session::has('first_message'))
+                        <div class="alert alert-warning">
+                            <b>{{ Session::get('first_message') }} <a href="{{ route('usuarios/cambiar_contrasena', ['id' => Auth::User()->id]) }}">en este enlace</a> antes de que cerrar sesión.</b>
+                        </div>
+                    @endif
+                    @include('alerts.success')
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

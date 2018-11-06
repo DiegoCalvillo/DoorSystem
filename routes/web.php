@@ -53,6 +53,8 @@ Route::get('articulos/destroy/{id}', ['as' => 'articulos/destroy', 'uses' => 'Ar
 Route::resource('/usuarios', 'UsuariosController');
 Route::get('usuarios/create', 'UsuariosController@create');
 Route::post('usuarios/store', ['as' => 'usuarios/store', 'uses' => 'UsuariosController@store']);
+Route::get('usuarios/{id}/cambiar_contrasena', ['as' => 'usuarios/cambiar_contrasena', 'uses' => 'UsuariosController@cambiar_contraseña']);
+Route::post('usuarios/cambio_contrasena_store', ['as' => 'usuarios/cambio_contrasena_store', 'uses' => 'UsuariosController@cambio_contrasena_store']);
 
 /*Rutas de LoginController*/
 Route::resource('/login', 'LoginController');

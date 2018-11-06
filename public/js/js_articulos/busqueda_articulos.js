@@ -4,11 +4,6 @@ $('#familias').change(function(event){
 		$(response).each(function(key, value){
 			$('#tabla_articulos').append('<tr><td>'+value.id+'</td><td><a href="/articulos/'+value.id+'">'+value.descripcion+'</a></td></tr>');
 		});
-		if(response == 0) {
-			$('#aviso_vacio').show();
-		} else {
-			$('#aviso_vacio').hide();
-		}
 	});
 
 	$.get('/sub_familia_id/'+event.target.value+'', function(res){
@@ -29,10 +24,5 @@ $('#sub_familias').change(function(event){
 		$(response).each(function(key, value){
 			$('#tabla_articulos').append('<tr><td>'+value.id+'</td><td><a href="/articulos/'+value.id+'">'+value.descripcion+'</a></td></tr>');
 		});
-		if(response == 0) {
-			$('#aviso_vacio').show();
-		} else {
-			$('#aviso_vacio').hide();
-		}
 	});
 });
