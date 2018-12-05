@@ -29,7 +29,9 @@
 								@foreach($usuarios as $usuario)
 									<tr>
 										<td>{{ $usuario->id }}</td>
-										<td>{{ $usuario->name }}</td>
+										<td>
+											<a href="{{ route('usuarios/show', ['id' => $usuario->id]) }}">{{ $usuario->name }}</a>
+										</td>
 										<td>
 											@if($usuario->estatus)
 												<font color="green"><b>Activado</b></font>

@@ -5,6 +5,8 @@ namespace DoorSystem\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use Keygen;
+use Mail;
+use DoorSystem\Mail\SendFisrtKey;
 use DoorSystem\User as User;
 use DoorSystem\personas as personas;
 
@@ -40,6 +42,7 @@ class UsuariosController extends Controller
         $usuario->session_logins_count = 0;
     	$usuario->save();
         personas::add_person($usuario->id, $request->nombre, $request->apellidos);
+        Mail::to($usuario->email)->send(new SendFisrtKey($usuario));
     	Session::flash('message', 'El registro ha sido creado satisfactoriamente');
     	return redirect('/usuarios');
     }
@@ -58,5 +61,33 @@ class UsuariosController extends Controller
         $usuario->save();
         Session::flash('message', 'Tu contraseña ha sido cambiada exitosamente');
         return redirect('/');
+    }
+
+    public function show($id) 
+    {
+        $usuario = User::find($id);
+        $persona = personas::where('user_id', '=', $id)->first();
+        return view('configuracion.usuarios.usuarios_perfil')->with('usuario', $usuario)->with('persona', $persona);
+    }
+
+    public function edit($id)
+    {
+        $usuario = User::find($id);
+        $persona = personas::where('user_id', '=', $usuario->id)->first();
+        return view('configuracion.usuarios.usuarios_editar')->with('usuario', $usuario)->with('persona', $persona);
+    }
+
+    public function update(Request $request)
+    {
+        $usuario = User::find($request->id);
+        $persona = personas::where('user_id', '=', $request->id)->first();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->estatus = $request->estatus;
+        $persona->nombre = $request->nombre;
+        $persona->apellidos = $request->apellidos;
+        $usuario->save();
+        $persona->save();
+        return redirect('/usuarios/'.$usuario->id);
     }
 }

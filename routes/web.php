@@ -55,6 +55,9 @@ Route::get('usuarios/create', 'UsuariosController@create');
 Route::post('usuarios/store', ['as' => 'usuarios/store', 'uses' => 'UsuariosController@store']);
 Route::get('usuarios/{id}/cambiar_contrasena', ['as' => 'usuarios/cambiar_contrasena', 'uses' => 'UsuariosController@cambiar_contraseña']);
 Route::post('usuarios/cambio_contrasena_store', ['as' => 'usuarios/cambio_contrasena_store', 'uses' => 'UsuariosController@cambio_contrasena_store']);
+Route::get('usuarios/{id}', ['as' => 'usuarios/show', 'uses' => 'UsuariosController@show']);
+Route::get('usuarios/{id}/edit', ['as' => 'usuarios/edit', 'uses' => 'UsuariosController@edit']);
+Route::put('usuarios/update', ['as' => 'usuarios/update', 'uses' => 'UsuariosController@update']);
 
 /*Rutas de LoginController*/
 Route::resource('/login', 'LoginController');
