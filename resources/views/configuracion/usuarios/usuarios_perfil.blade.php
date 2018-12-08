@@ -80,6 +80,7 @@
 					</div>
 				</div>
 				@include('configuracion.usuarios.shared.usuarios_opciones')
+				@include('configuracion.usuarios.usuarios_modals')
 			</div>
 		</div>
 	</div>

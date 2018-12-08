@@ -41,8 +41,8 @@ class UsuariosController extends Controller
         $usuario->user_type_id = 1;
         $usuario->session_logins_count = 0;
     	$usuario->save();
-        personas::add_person($usuario->id, $request->nombre, $request->apellidos);
-        Mail::to($usuario->email)->send(new SendFisrtKey($usuario));
+        $persona = personas::add_person($usuario->id, $request->nombre, $request->apellidos);
+        Mail::to($usuario->email)->send(new SendFisrtKey($usuario, $persona));
     	Session::flash('message', 'El registro ha sido creado satisfactoriamente');
     	return redirect('/usuarios');
     }
@@ -89,5 +89,14 @@ class UsuariosController extends Controller
         $usuario->save();
         $persona->save();
         return redirect('/usuarios/'.$usuario->id);
+    }
+
+    public function destroy($id)
+    {
+        $usuario = User::find($id);
+        personas::delete_person($usuario->id);
+        $usuario->delete();
+        Session::flash('message', 'El registro ha sido eliminado exitosamente');
+        return redirect('/usuarios');
     }
 }

@@ -12,15 +12,17 @@ class SendFisrtKey extends Mailable
     use Queueable, SerializesModels;
 
     public $usuario;
+    public $persona;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(usuario $usuario)
+    public function __construct($usuario, $persona)
     {
         $this->usuario = $usuario;
+        $this->persona = $persona;
     }
 
     /**

@@ -6,8 +6,8 @@
 	<title>Mensaje de Bienvenida</title>
 </head>
 <body>
-	<p>Hola, Diego</p>
-	<p>Te ha sido creada una cuenta en el sistema DoorSystem. La siguiente clave te servirá para que puedas iniciar sesion en el sistema por primera vez. Te pedimos que una vez dentro te pedimos que sigas las instrucciones al pie de la letra</p>
+	<p>Hola, {{ $persona->nombre }}</p>
+	<p>Te ha sido creada una cuenta en el sistema DoorSystem. La siguiente clave te servirá para que puedas iniciar sesion en el sistema por primera vez. Te pedimos que una vez dentro te pedimos sigas las instrucciones al pie de la letra</p>
 	<br>
 	<p><b>{{ $usuario->first_key }}</b></p>
 
