@@ -28,6 +28,10 @@
 										<td>{{ $usuario->email }}</td>
 									</tr>
 									<tr>
+										<th>Perfil</th>
+										<td>{{ $usuario->perfil->nombre_perfil }}</td>
+									</tr>
+									<tr>
 										<th>Estatus</th>
 										<td>
 											@if($usuario->estatus == true)

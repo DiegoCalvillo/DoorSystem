@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 
     ];
 
     /**
@@ -24,11 +24,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'first_key',
     ];
 
     public static function nombre()
     {
         
+    }
+
+    public function perfil()
+    {
+        return $this->belongsTo(Perfiles::class, 'user_type_id');
     }
 }

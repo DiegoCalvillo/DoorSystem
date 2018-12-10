@@ -32,6 +32,10 @@
 								</div>
 							</div>
 							<div class="col-lg-6">
+								{!! Form::label('full_name', 'Perfil') !!}
+								{!! Form::select('user_type_id', $perfiles, $usuario->user_type_id, ['class' => 'form-control']) !!}
+							</div>
+							<div class="col-lg-6">
 								<div class="form-group">
 									{!! Form::label('full_name', 'Estatus de Usuario') !!}
 									{!! Form::select('estatus', array('1' => 'Activado', '0' => 'Desactivado'), $usuario->estatus, ['class' => 'form-control']) !!}

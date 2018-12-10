@@ -410,6 +410,11 @@
 @yield('content_cambio_contraseña')
 @yield('content_usuarios_perfil')
 @yield('content_usuarios_editar')
+<!--Perfiles-->
+@yield('content_perfiles')
+@yield('content_perfiles_nuevo')
+@yield('content_perfiles_perfil')
+@yield('content_perfiles_editar')
     <!-- jQuery 
     <script src="js/jquery.min.js"></script>-->
     {!! Html::script('js/jquery.min.js') !!}

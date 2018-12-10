@@ -65,4 +65,12 @@ Route::resource('/login', 'LoginController');
 Route::post('login/store', ['as' => 'login/store', 'uses' => 'LoginController@store']);
 Route::get('/logout', 'LoginController@logout');
 
+/*Rutas de PerfilesController*/
+Route::resource('/perfiles', 'PerfilesController');
+Route::get('perfiles/create', ['as' => 'perfiles/create', 'uses' => 'PerfilesController@create']);
+Route::post('perfiles/store', ['as' => 'perfiles/store', 'uses' => 'PerfilesController@store']);
+Route::get('perfiles/{id}', ['as' => 'perfiles/show', 'uses' => 'PerfilesController@show']);
+Route::get('perfiles/{id}/edit', ['as' => 'perfiles/edit', 'uses' => 'PerfilesController@edit']);
+Route::put('perfiles/update', ['as' => 'perfiles/update', 'uses' => 'PerfilesController@update']);
+
 Auth::routes();

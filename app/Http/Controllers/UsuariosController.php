@@ -9,6 +9,7 @@ use Mail;
 use DoorSystem\Mail\SendFisrtKey;
 use DoorSystem\User as User;
 use DoorSystem\personas as personas;
+use DoorSystem\Perfiles as Perfiles;
 
 class UsuariosController extends Controller
 {
@@ -25,7 +26,8 @@ class UsuariosController extends Controller
 
     public function create()
     {
-    	return view('configuracion.usuarios.usuarios_nuevo');
+        $perfiles = Perfiles::habilitado()->pluck('nombre_perfil', 'id');
+    	return view('configuracion.usuarios.usuarios_nuevo')->with('perfiles', $perfiles);
     }
 
     public function store(Request $request)
@@ -38,7 +40,7 @@ class UsuariosController extends Controller
     	$usuario->first_key = Keygen::numeric(8)->generate();
         $usuario->password = bcrypt($usuario->first_key);
         $usuario->change_password = false;
-        $usuario->user_type_id = 1;
+        $usuario->user_type_id = $request->user_type_id;
         $usuario->session_logins_count = 0;
     	$usuario->save();
         $persona = personas::add_person($usuario->id, $request->nombre, $request->apellidos);
@@ -74,7 +76,8 @@ class UsuariosController extends Controller
     {
         $usuario = User::find($id);
         $persona = personas::where('user_id', '=', $usuario->id)->first();
-        return view('configuracion.usuarios.usuarios_editar')->with('usuario', $usuario)->with('persona', $persona);
+        $perfiles = Perfiles::habilitado()->pluck('nombre_perfil', 'id');
+        return view('configuracion.usuarios.usuarios_editar')->with('usuario', $usuario)->with('persona', $persona)->with('perfiles', $perfiles);
     }
 
     public function update(Request $request)
@@ -84,6 +87,7 @@ class UsuariosController extends Controller
         $usuario->name = $request->name;
         $usuario->email = $request->email;
         $usuario->estatus = $request->estatus;
+        $usuario->user_type_id = $request->user_type_id;
         $persona->nombre = $request->nombre;
         $persona->apellidos = $request->apellidos;
         $usuario->save();

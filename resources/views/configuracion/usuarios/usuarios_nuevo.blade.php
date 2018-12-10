@@ -30,6 +30,10 @@
 									{!! Form::email('email', null, ['class' => 'form-control']) !!}
 								</div>
 							</div>
+							<div class="col-lg-6">
+								{!! Form::label('full_name', 'Perfil') !!}
+								{!! Form::select('user_type_id', $perfiles, null, ['class' => 'form-control']) !!}
+							</div>
 						</div>
 					</div>
 				</div>

@@ -17,6 +17,11 @@
 					<a href="{{ url('/usuarios') }}">Usuarios</a>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<a href="{{ url('/perfiles') }}">Perfiles</a>
+				</div>
+			</div>
 		</div>
 	</div>
 @stop
