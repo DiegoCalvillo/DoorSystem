@@ -5,7 +5,7 @@
 		</div>
 		<div class="panel-body">
 			<a href="{{ route('perfiles/edit', ['id' => $perfil->id]) }}" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i> Editar</a>
-			<button class="btn btn-danger" data-toggle="modal" data-target=""><i class="glyphicon glyphicon-remove-sign"> Eliminar</i></button>
+			<button class="btn btn-danger" data-toggle="modal" data-target="#deletePerfilModal"><i class="glyphicon glyphicon-remove-sign"> Eliminar</i></button>
 		</div>
 	</div>
 </div>

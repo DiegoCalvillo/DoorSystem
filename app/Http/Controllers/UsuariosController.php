@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Session;
 use Keygen;
 use Mail;
+use Auth;
 use DoorSystem\Mail\SendFisrtKey;
 use DoorSystem\User as User;
 use DoorSystem\personas as personas;
-use DoorSystem\Perfiles as Perfiles;
+use Spatie\Permission\Models\Role as Role;
 
 class UsuariosController extends Controller
 {
@@ -20,13 +21,13 @@ class UsuariosController extends Controller
 
     public function index()
     {
-    	$usuarios = User::all();
+    	$usuarios = User::Authentication();
     	return view('configuracion.usuarios.usuarios')->with('usuarios', $usuarios);
     }
 
     public function create()
     {
-        $perfiles = Perfiles::habilitado()->pluck('nombre_perfil', 'id');
+        $perfiles = Role::where('estatus', '=', true)->pluck('name', 'id');
     	return view('configuracion.usuarios.usuarios_nuevo')->with('perfiles', $perfiles);
     }
 
@@ -76,7 +77,7 @@ class UsuariosController extends Controller
     {
         $usuario = User::find($id);
         $persona = personas::where('user_id', '=', $usuario->id)->first();
-        $perfiles = Perfiles::habilitado()->pluck('nombre_perfil', 'id');
+        $perfiles = Role::where('estatus', '=', true)->pluck('name', 'id');
         return view('configuracion.usuarios.usuarios_editar')->with('usuario', $usuario)->with('persona', $persona)->with('perfiles', $perfiles);
     }
 

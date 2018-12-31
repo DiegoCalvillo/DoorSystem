@@ -10,4 +10,10 @@ class Perfiles extends Model
     {
     	return $query->where('estatus', '=', true)->get();
     }
+
+    public function users()
+    {
+    	return $this->hasMany(User::class, 'user_type_id');
+    }
+
 }

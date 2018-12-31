@@ -72,5 +72,6 @@ Route::post('perfiles/store', ['as' => 'perfiles/store', 'uses' => 'PerfilesCont
 Route::get('perfiles/{id}', ['as' => 'perfiles/show', 'uses' => 'PerfilesController@show']);
 Route::get('perfiles/{id}/edit', ['as' => 'perfiles/edit', 'uses' => 'PerfilesController@edit']);
 Route::put('perfiles/update', ['as' => 'perfiles/update', 'uses' => 'PerfilesController@update']);
+Route::get('perfiles/destroy/{id}', ['as' => 'perfiles/destroy', 'uses' => 'PerfilesController@destroy']);
 
 Auth::routes();

@@ -83,8 +83,10 @@
 						<img class="rounded-circle img-fluid d-block mx-auto" width="40%" src="{!! asset($persona->ruta_foto_perfil) !!}">
 					</div>
 				</div>
-				@include('configuracion.usuarios.shared.usuarios_opciones')
-				@include('configuracion.usuarios.usuarios_modals')
+				@if($usuario->id != Auth::User()->id)
+					@include('configuracion.usuarios.shared.usuarios_opciones')
+					@include('configuracion.usuarios.usuarios_modals')
+				@endif
 			</div>
 		</div>
 	</div>

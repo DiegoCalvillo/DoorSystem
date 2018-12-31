@@ -30,7 +30,7 @@
 									<tr>
 										<td>{{ $perfil->id }}</td>
 										<td>
-											<a href="{{ route('perfiles/show', ['id' => $perfil->id]) }}">{{ $perfil->nombre_perfil }}</a>
+											<a href="{{ route('perfiles/show', ['id' => $perfil->id]) }}">{{ $perfil->name }}</a>
 										</td>
 										<td>
 											@if($perfil->estatus)

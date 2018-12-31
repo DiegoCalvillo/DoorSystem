@@ -4,6 +4,8 @@ namespace DoorSystem;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Models\Role as Role;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -34,6 +36,11 @@ class User extends Authenticatable
 
     public function perfil()
     {
-        return $this->belongsTo(Perfiles::class, 'user_type_id');
+        return $this->belongsTo(Role::class, 'user_type_id');
+    }
+
+    public function scopeAuthentication($query)
+    {
+        return $query->where('id', '!=', Auth::User()->id)->get();
     }
 }

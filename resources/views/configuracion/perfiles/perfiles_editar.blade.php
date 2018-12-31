@@ -21,7 +21,7 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									{!! Form::label('full_name', 'Perfil') !!}
-									{!! Form::text('nombre_perfil', $perfil->nombre_perfil, ['class' => 'form-control']) !!}
+									{!! Form::text('nombre_perfil', $perfil->name, ['class' => 'form-control']) !!}
 								</div>
 							</div>
 							<div class="col-lg-6">

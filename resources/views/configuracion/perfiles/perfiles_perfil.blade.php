@@ -5,10 +5,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">{{ $perfil->nombre_perfil }}</h1>
+				<h1 class="page-header">{{ $perfil->name }}</h1>
 			</div>
 		</div>
 		@include('alerts.success')
+		@include('alerts.errors')
 		<div class="row">
 			<div class="col-lg-7">
 				<div class="panel panel-default">
@@ -40,6 +41,7 @@
 				</div>
 			</div>
 			@include('configuracion.perfiles.shared.perfiles_opciones')
+			@include('configuracion.perfiles.perfiles_modals')
 		</div>
 	</div>
 </div>
